@@ -1,0 +1,15 @@
+cd to the current repository
+sbt to make the . to be the sbt environment
+mkdir -p src/main/scala to hold the main functions
+mkdir -p src/test/scala to hold the test functions
+...
+compile the project by > compile
+run the binary file by > run
+
+a build.sbt file may be needed to change the version of the scala
+name := "foldername"
+version := "0.1.0"
+scalaVersion := "2.11.6"
+
+Most of the Documents should be found in: 
+docs.scala-lang.org/cheatsheets/

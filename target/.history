@@ -1,0 +1,13 @@
+console
+compile
+run
+java Hello
+console
+compile
+console
+compile
+GetSum
+run
+GetSum.Sum
+val a = new GetSum
+console
