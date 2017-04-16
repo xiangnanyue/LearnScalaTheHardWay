@@ -1,0 +1,34 @@
+mkdir -p src/main/scala
+exit
+compile
+run
+compile
+exit
+compile
+object rational {
+    val a = new Rational(1,2)
+    val b = new Rational(3,4)
+    a + b
+    a max b
+val a = new Rational(1,2)
+    val b = new Rational(3,4)
+    a + b
+console
+compile
+run
+run rational
+rational
+compile
+console
+exit
+compile
+run
+console
+compile
+run
+compile
+run
+compile
+run
+console
+exit

@@ -1,3 +1,4 @@
+1. start by creating a sbt project
 cd to the current repository
 sbt to make the . to be the sbt environment
 mkdir -p src/main/scala to hold the main functions
@@ -13,3 +14,47 @@ scalaVersion := "2.11.6"
 
 Most of the Documents should be found in: 
 docs.scala-lang.org/cheatsheets/
+
+Youtube: working hard to get it simple
+
+2 Functions and Evaluations 
+1) Evaluations : call by name and call by value 
+    CBN doesn't lead to CBV
+    while CBV => CBN
+eg: find an expression that terminates under CBN but not under CBV
+-- seems that CBN is more powerful? not really, CBV used more often 
+because it's faster sometimes
+    use => t :Int to indicate CBN
+def is the by-name, right hand side is evaluated when using
+val is by-value way, right hand side is evaluated at definition
+
+2) Good style of scala 
+use blocks to expose fewer functions / methods to the user
+outside the block definition of variables is available for inside the block,
+unless it's shadowed by the same name variables
+
+use () to expand a line
+or write the operator at the end of the line 
+
+recursion function has to be specified with the return type
+
+3) tail recursion 
+if a function calls itself as its last action (and no other operations), the function's stack frame can 
+be reused.
+the stack frame can be reused and constant (good idea if possible)
+use @tailrec to indicate that it's tail-recursive 
+
+design a tail-recursive version of factorial 
+
+3 scala syntax 
+
+4 functions and data 
+    scala also uses the function private, override (toString, eg) 
+    require(cond, "strings indicate error")
+a generial way to make your code readable: 
+    1) use infix Notation:
+    r.add(s) => r add s
+    2) relaxed identifiers
+    alphanumeric
+    ..
+operator precedence : the operator will be compared from their first symbol

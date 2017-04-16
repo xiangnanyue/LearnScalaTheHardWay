@@ -11,3 +11,4 @@ run
 GetSum.Sum
 val a = new GetSum
 console
+exit
