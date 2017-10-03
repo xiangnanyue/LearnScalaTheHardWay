@@ -1,3 +1,7 @@
+ref
+http://www.scholarpedia.org/article/Boltzmann_machine
+https://www.cs.toronto.edu/~hinton/csc321/readings/boltz321.pdf
+
 1. start by creating a sbt project
 cd to the current repository
 sbt to make the . to be the sbt environment
@@ -58,3 +62,263 @@ a generial way to make your code readable:
     alphanumeric
     ..
 operator precedence : the operator will be compared from their first symbol
+
+5 implementation of abstract classes
+    two types of possible trees 
+        a tree of empty set
+        a tree consisting of an integer and two sub-trees
+the empty set can be implemented as classes
+but also can be taken as object as there is really one instance of it
+
+scala implements the dynamic method dispatch
+    the implementation depends on the run-time value
+
+like in Java, scala can have only one super class, but implement the 
+poly-herientation by traits
+class ... extends ... with ...
+
+but Traits can contain fields and concrete methods
+
+Traits never have paras
+
+6 Null and Nothing
+    Nothing is at the bottom of Scala's type, it's a subtype of 
+    every other type.
+    - to signal the abnormal termination
+    - as an element type of empty collection
+Null is the subtype of every object type or ref, and incompatible with any value
+
+when not coherent; take the type the most exact
+
+7 cons-list or immutable list
+all type parametres and type arguments are removed before evaluating
+the program
+this is called type erasure
+
+8 polymorphism 
+    subtyping : instance of a subclass can be passed to a based class
+    generics
+    bounds 
+        type bounds is like upperlimits
+            S <: IntSet means S can be instantiated only to types that conform to IntSet
+            S <: T means that S is a subtype of T and 
+            S >: T means that S is a supertype of T
+            and we use 
+                def assertpos[S<:T](r: S) : S = 
+            and it's also possible to use a mixed bounds [S >: T <: V]
+    variance and covariance
+        S <: T => List(S) <: List(T) is called covariant
+        the Liskov Substitution Principle
+        eg  
+            type A = IntSet => nonempty 
+            type B = nonempty => IntSet
+        then A <: B
+    array[IntSet] not covariant with array[nonempty] ? why
+
+    a type that accepts mutations of its elements should not be covariant 
+        eg array type
+    immutable types can be covariant : some conditions on methods are met if
+        eg list type
+    
+    different '3 types) of definition of variance : 
+        covariant   C[+A]
+        contravariant   C[-A]
+        nonvariant  C[A]
+        , which can be declared by annotating the type parameter
+    can prove that functions are contravariant in their argument types and covariant in their
+    result type
+        this leads to the definition: 
+            trait Function1[-T, +U] {
+                def apply(x: T): U
+            }
+        cov only in method results
+        contra can only appear in parametres
+        inv can anywhere
+
+    the may be the case when we want a covariance type in the param,
+    then use the lower bound, then the return type can be some base class
+    eg:     List[IntSet].prepend(Empty) is applicable 
+        but List[nonempty].prepend(Empty) is not applicable, 
+        then return list cannot be defined as List[T]  , but can be defined as List[U], 
+        if U >: T
+
+9 the eta-transformation
+    usually the method is not an object (as the function is a class), a class cannot
+    contains a specific object instance
+    the method can serve as a function, because it's transformed to function value at the
+    running time .
+
+10 Decomposition
+    isInstanceOf and asInstanceOf
+   the use of asInstanceOf is similar to type cast in Java, but in scala we can assure
+   the cast by isInstanceOf 
+
+   pattern matching
+   e match   
+    a contructor C(p1, p2): matches type C with arguments patterns p1,p2
+    a variable pattern x matches any value and binds name of variable to the value
+    a constant pattern c matches a value == c
+    match is in sequence order
+
+11 List 
+    Lists are immutable and homogeneous (elements must be of same type)
+    Lists are recursive and arrays are flat
+    List[T]
+    List()
+    constructed like this : l1:: (l2 :: l3) and parenthese can be left out
+    equivalent to l3.::l2
+
+    :: is also used in pattern matching 
+    List(p1, ..., pn)
+
+12 More about List's functions
+though the use of List is often not recommended in scala,
+remember that List is immutable and these functions only create a new List
+1) sublists and element access: the basic ones to construct
+    xs.length
+    xs.last
+    xs.init
+    xs take n
+    xs drop n
+    xs(n)
+
+2) create new lists 
+    xs ++ ys
+    xs.reverse
+    xs updated (n, x)
+
+3) finding elements
+    xs indexOf ele  // returns -1 if the ele not exists
+    xs contains ele // same as xs indexOf ele > 0
+
+4) concatenation
+    xs ::: ys = ys.:::(xs)
+
+5) reverse
+
+6) Pairs and tuples
+splitAt returns the pairs and tuples
+
+put the function value at last so that it's possible that type
+checking has already been done 
+
+scala.math.Ordering[T]
+import math.Ordering
+Ordering.Int.lt()
+
+by making ord an implicit parameter 
+    marked implicit
+    type compatible with 
+    visible at the point of function call
+
+7) higher order function for List
+    map
+    filter
+    filerNot
+    partition
+
+    takeWhile
+    dropWhile
+    span
+
+write a pack use takeWhile and use pack to do the reduce count
+takeWhile(x==xs1(0))
+
+8) special higher order functions : foler and reduce
+    reduce
+    reduceLeft
+    (using underscores to write it in simple way)
+    foldLeft
+    (List(x1,x2) foldLeft z)(op)
+        eg  (xs foldLeft 0)(_+_)
+    *reduce implemented by foldLeft
+
+    foldRight
+    (xs foldRight ys)(_::_)
+
+13 natural induction => structural induction
+    P(Nil) holds
+    if P(xs) holds, then P(x::xs) holds
+
+14 A larger equation proof on Lists
+    A law of Reverse
+
+15 collections 
+    access to the list head is much faster
+    vector is a more evenly balanced access pattern 
+
+    vectors are preferred when we have to do the index like operations
+
+    Iteratble : sequences, sets and Maps
+    sequence : List, vector, Range (string, arrays)
+        val r: Range = 1 until 5
+        val s: Range = 1 to 5 
+        1 to 9 by 2 
+    
+    exists
+    forall
+    zip
+    unzip
+    flatMap
+    sum
+    max
+    min
+    flatten 
+    xs flatMap f = (xs map f).flatten
+
+    for(p <- persons if p.age > 20) yield p.name
+        generators and filters 
+        generators is of form p <- iterates 
+        where p can be a pattern 
+        e is an expression whose value is a collection
+        if e 
+        use {} then it can be written in multiple lines
+
+    for {
+        (x, y) <- xs zip ys 
+        if x>0
+    } yield x*y
+
+    for{i <- 1 until 10 
+        j <- 9 until 18
+        } yield (i, j)
+
+    List mkString xx, print out all elements in List and use xx 
+    as a separator
+
+16 map
+    map can works like a function
+    or takes multiple functions
+    f = Map(xx => yy)
+    f get xx
+
+    the option type
+
+    sortWith(expression)
+    lis.sorted  : sort by the original order
+
+    groupBy returns a Type Map: 
+    val df = fruit.groupBy(_.head)
+    df('p')
+
+    using groupBy to write a polynomial function
+    (Map(5->2, 3->4) ++ Map(5->6, 7->8)) the left side 5-> will be lost
+
+    map is a partial function, 
+    an operation withDefaultValue turns a map into a total function
+    "<unknown>" can be any value you defined
+
+    auxiliary 
+    def this(bindings: (Int, Double)*) = this(bindings.toMap)
+
+17 Case classes
+    scala's preferred way to define complex data
+    
+18 All that is required to use For is some interpretation of map, 
+flatMap and withFilter
+    For is not binded to the collections
+
+    three laws to qualify as a monad
+
+19 create a stream
+

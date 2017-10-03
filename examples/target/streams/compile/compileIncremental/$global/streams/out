@@ -1,15 +1,58 @@
 [0m[[0mdebug[0m] [0m[0m
 [0m[[0mdebug[0m] [0mInitial source changes: [0m
-[0m[[0mdebug[0m] [0m	removed:Set()[0m
+[0m[[0mdebug[0m] [0m	removed:Set(/Users/ab/Documents/ScalaProgramming/examples/src/main/scala/Main.scala, /Users/ab/Documents/ScalaProgramming/examples/src/main/scala/rational.scala)[0m
 [0m[[0mdebug[0m] [0m	added: Set()[0m
 [0m[[0mdebug[0m] [0m	modified: Set()[0m
-[0m[[0mdebug[0m] [0mInvalidated products: Set()[0m
+[0m[[0mdebug[0m] [0mInvalidated products: Set(/Users/ab/Documents/ScalaProgramming/examples/target/scala-2.10/classes/rational$.class)[0m
 [0m[[0mdebug[0m] [0mExternal API changes: API Changes: Set()[0m
 [0m[[0mdebug[0m] [0mModified binary dependencies: Set()[0m
-[0m[[0mdebug[0m] [0mInitial directly invalidated sources: Set()[0m
+[0m[[0mdebug[0m] [0mInitial directly invalidated sources: Set(/Users/ab/Documents/ScalaProgramming/examples/src/main/scala/Main.scala, /Users/ab/Documents/ScalaProgramming/examples/src/main/scala/rational.scala)[0m
 [0m[[0mdebug[0m] [0m[0m
 [0m[[0mdebug[0m] [0mSources indirectly invalidated by:[0m
-[0m[[0mdebug[0m] [0m	product: Set()[0m
+[0m[[0mdebug[0m] [0m	product: Set(/Users/ab/Documents/ScalaProgramming/examples/src/main/scala/rational.scala)[0m
 [0m[[0mdebug[0m] [0m	binary dep: Set()[0m
 [0m[[0mdebug[0m] [0m	external source: Set()[0m
-[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set()[0m
+[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set(/Users/ab/Documents/ScalaProgramming/examples/src/main/scala/Main.scala, /Users/ab/Documents/ScalaProgramming/examples/src/main/scala/rational.scala)[0m
+[0m[[0mdebug[0m] [0mRecompiling all 0 sources: invalidated sources (2) exceeded 50.0% of all sources[0m
+java.lang.IllegalArgumentException: requirement failed: Source file '/Users/ab/Documents/ScalaProgramming/examples/target/scala-2.10/classes/rational.class' does not exist.
+	at scala.Predef$.require(Predef.scala:233)
+	at sbt.IO$.copyFile(IO.scala:583)
+	at sbt.IO$.move(IO.scala:786)
+	at sbt.inc.ClassfileManager$$anonfun$transactional$1$$anon$2.sbt$inc$ClassfileManager$$anonfun$$anon$$move(ClassfileManager.scala:75)
+	at sbt.inc.ClassfileManager$$anonfun$transactional$1$$anon$2$$anonfun$delete$3.apply(ClassfileManager.scala:52)
+	at sbt.inc.ClassfileManager$$anonfun$transactional$1$$anon$2$$anonfun$delete$3.apply(ClassfileManager.scala:51)
+	at scala.collection.immutable.HashSet$HashSet1.foreach(HashSet.scala:153)
+	at scala.collection.immutable.HashSet$HashTrieSet.foreach(HashSet.scala:306)
+	at sbt.inc.ClassfileManager$$anonfun$transactional$1$$anon$2.delete(ClassfileManager.scala:51)
+	at sbt.inc.Incremental$.prune(Incremental.scala:82)
+	at sbt.inc.IncrementalCommon.cycle(IncrementalCommon.scala:28)
+	at sbt.inc.Incremental$$anonfun$1.apply(Incremental.scala:62)
+	at sbt.inc.Incremental$$anonfun$1.apply(Incremental.scala:61)
+	at sbt.inc.Incremental$.manageClassfiles(Incremental.scala:89)
+	at sbt.inc.Incremental$.compile(Incremental.scala:61)
+	at sbt.inc.IncrementalCompile$.apply(Compile.scala:54)
+	at sbt.compiler.IC$.compileInternal(IncrementalCompiler.scala:160)
+	at sbt.compiler.IC$.incrementalCompile(IncrementalCompiler.scala:138)
+	at sbt.Compiler$.compile(Compiler.scala:128)
+	at sbt.Compiler$.compile(Compiler.scala:114)
+	at sbt.Defaults$.sbt$Defaults$$compileIncrementalTaskImpl(Defaults.scala:829)
+	at sbt.Defaults$$anonfun$compileIncrementalTask$1.apply(Defaults.scala:820)
+	at sbt.Defaults$$anonfun$compileIncrementalTask$1.apply(Defaults.scala:818)
+	at scala.Function1$$anonfun$compose$1.apply(Function1.scala:47)
+	at sbt.$tilde$greater$$anonfun$$u2219$1.apply(TypeFunctions.scala:40)
+	at sbt.std.Transform$$anon$4.work(System.scala:63)
+	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:226)
+	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:226)
+	at sbt.ErrorHandling$.wideConvert(ErrorHandling.scala:17)
+	at sbt.Execute.work(Execute.scala:235)
+	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:226)
+	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:226)
+	at sbt.ConcurrentRestrictions$$anon$4$$anonfun$1.apply(ConcurrentRestrictions.scala:159)
+	at sbt.CompletionService$$anon$2.call(CompletionService.scala:28)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+[0m[[31merror[0m] [0m(compile:[31mcompileIncremental[0m) java.lang.IllegalArgumentException: requirement failed: Source file '/Users/ab/Documents/ScalaProgramming/examples/target/scala-2.10/classes/rational.class' does not exist.[0m
